@@ -1,12 +1,17 @@
 {
-  "name": "<%= packageName %>",
-  "description": "<%= description %>",
-  "repository": "https://github.com/<%= githubOrg %>/<%= shortName %>.git",
-  <%= publishInfo %>,
+  "name": "@brightspace-ui-labs/pagination",
+  "description": "A component to indicate the existence of multiple pages of content, and to provide a mechanism to navigate them.",
+  "repository": "https://github.com/BrightspaceUILabs/pagination.git",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "pagination.js"
+  ],
   "scripts": {
     "lint": "npm run lint:eslint && npm run lint:lit",
     "lint:eslint": "eslint . --ext .js,.html",
-    "lint:lit": "lit-analyzer <%= shortName %>.js demo test",
+    "lint:lit": "lit-analyzer pagination.js demo test",
     "start": "es-dev-server --app-index demo/index.html --node-resolve --dedupe --open --watch",
     "test": "npm run lint && npm run test:headless && npm run test:diff",
     "test:diff": "mocha ./**/*.visual-diff.js -t 40000",
@@ -36,7 +41,7 @@
     "puppeteer": "^1"
   },
   "dependencies": {
-    "@brightspace-ui/core": "^1",
+    "@brightspace-ui/core": "^1.43.4",
     "@webcomponents/webcomponentsjs": "^2",
     "lit-element": "^2"
   }
