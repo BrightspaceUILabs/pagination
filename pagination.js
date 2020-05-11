@@ -2,6 +2,7 @@ import '@brightspace-ui/core/components/button/button-icon.js';
 import '@brightspace-ui/core/components/inputs/input-text.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { LocalizeMixin } from '@brightspace-ui/core/mixins/localize-mixin.js';
+import { getLocalizeResources } from './localization.js';
 import { RtlMixin } from '@brightspace-ui/core/mixins/rtl-mixin.js';
 import { selectStyles } from '@brightspace-ui/core/components/inputs/input-select-styles.js';
 
@@ -15,6 +16,7 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 			previousPageText: { type: String },
 			showItemCountSelect : { type: Boolean },
 			itemCountOptions : { type: Array },
+			selectedCountOption : {type: Number},
 
 			_disablePrevPage: { type: Boolean },
 			_disableNextPage: { type: Boolean },
@@ -73,14 +75,14 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 		this.nextPageText = 'To next page';
 		this.previousPageText = 'To previous page';
 		this.pageNumber = 1;
-		this.itemCountOptions = [10, 20, 30, 40, 6000];
+		this.itemCountOptions = [10, 20, 30, 40];
 		this.maxPageNumber = 1;
 	}
 
 	_submitPageNumber(e) {
 		console.log(e.target.value);
 
-		const event = new CustomEvent('pagination-page-changed', {
+		const event = new CustomEvent('pagination-page-change', {
 			detail: {
 				page: e.target.value
 			},
@@ -92,7 +94,7 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 
 	_navToPreviousPage() {
 		const newPageNumber = this.pageNumber - 1;
-		const event = new CustomEvent('pagination-page-changed', {
+		const event = new CustomEvent('pagination-page-change', {
 			detail: {
 				page: newPageNumber
 			},
@@ -104,7 +106,7 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 
 	_navToNextPage() {
 		const newPageNumber = this.pageNumber + 1;
-		const event = new CustomEvent('pagination-page-changed', {
+		const event = new CustomEvent('pagination-page-change', {
 			detail: {
 				page: newPageNumber
 			},
@@ -114,8 +116,8 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 		this.dispatchEvent(event);
 	}
 
-	_pageCounterChanged(e) {
-		const event = new CustomEvent('pagination-item-counter-changed', {
+	_pageCounterChange(e) {
+		const event = new CustomEvent('pagination-item-counter-change', {
 			detail: {
 				itemCount: e.target.value
 			},
@@ -142,9 +144,9 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 			<d2l-button-icon icon="d2l-tier1:chevron-right" @click="${this._navToNextPage}" text="${this.nextPageText}" ?disabled=${this.disableNextPageButton()}></d2l-button-icon>
 
 			${this.showItemCountSelect ? html`
-				<select class="d2l-input-select" @change="${this._pageCounterChanged}">
+				<select class="d2l-input-select" @change="${this._pageCounterChange}">
 					${this.itemCountOptions.map(item => html`
-						<option value="${item}">${item} per page</option>
+						<option ?selected="${this.selectedCountOption === item}" value="${item}">${item} per page</option>
 					`)}
 				</select>` : null }
 

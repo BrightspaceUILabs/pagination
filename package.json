@@ -1,12 +1,16 @@
 {
   "name": "@brightspace-ui-labs/pagination",
+  "version": "0.0.1",
   "description": "A component to indicate the existence of multiple pages of content, and to provide a mechanism to navigate them.",
   "repository": "https://github.com/BrightspaceUILabs/pagination.git",
   "publishConfig": {
     "access": "public"
   },
   "files": [
-    "pagination.js"
+    "pagination.js",
+    "localization.js",
+    ".gitignore",
+    "/lang"
   ],
   "scripts": {
     "lint": "npm run lint:eslint && npm run lint:lit",
@@ -44,5 +48,10 @@
     "@brightspace-ui/core": "^1.43.4",
     "@webcomponents/webcomponentsjs": "^2",
     "lit-element": "^2"
+  },
+  "homepage": "https://github.com/BrightspaceUILabs/paginatione#readme",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
   }
 }

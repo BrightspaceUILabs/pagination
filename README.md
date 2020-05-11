@@ -15,10 +15,10 @@
 > - [ ] [Accessibility tests](https://github.com/BrightspaceUI/guide/wiki/Testing#automated-accessibility-testing-with-axe)
 > - [ ] [Visual diff tests](https://github.com/BrightspaceUI/visual-diff)
 > - [ ] [Localization](https://github.com/BrightspaceUI/guide/wiki/Localization) with Serge (if applicable)
-> - [ ] Demo page
-> - [ ] README documentation
+> - [x] Demo page
+> - [x] README documentation
 
-A component to indicate the existence of multiple pages of content, and to provide a mechanism to navigate them.
+A component to indicate the existence of, and provide navigation for, multiple pages of content.
 
 ## Installation
 
@@ -36,6 +36,31 @@ npm install @brightspace-ui-labs/pagination
 </script>
 <d2l-labs-pagination></d2l-labs-pagination>
 ```
+
+**Properties:**
+- `pageNumber` (required, Number): The current page number
+- `maxPageNumber` (required, Number): The highest page number the user could navigate to
+- `nextPageText` (String, default:`To next page`): The screen reader and tooltip text for the `Next Page` button.
+- `previousPageText` (String, default:`To previous page`): The screen reader and tooltip text for the `Previous Page` button.
+- `showItemCountSelect` (Boolean, default:`False`): Determines whether or not to show the `Items Per Page` select component.
+- `itemCountOptions` (Array, default:`[10,20,30,40]`): The options available in the `Items Per Page` select component.
+- `selectedCountOption`(Number): The selected option from the `itemCountOptions` select component.
+
+**Events:**
+The `d2l-labs-pagination` dispatches the `pagination-page-change` event when either the navigation buttons are pressed, or the page number is modified to point to a valid page number. It will return the number of the requested page:
+```javascript
+editInPlace.addEventListener('pagination-page-change', (e) => {
+  console.log(e.detail.page);
+});
+```
+
+The `d2l-labs-pagination` dispatches the `pagination-item-counter-change` event when the item count selector is value is changed. It will return the number of items requested per page:
+```javascript
+editInPlace.addEventListener('pagination-item-counter-change', (e) => {
+  console.log(e.detail.itemCount);
+});
+```
+
 
 ## Developing, Testing and Contributing
 
