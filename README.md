@@ -43,7 +43,7 @@ npm install @brightspace-ui-labs/pagination
 - `nextPageText` (String, default:`To next page`): The screen reader and tooltip text for the `Next Page` button.
 - `previousPageText` (String, default:`To previous page`): The screen reader and tooltip text for the `Previous Page` button.
 - `showItemCountSelect` (Boolean, default:`False`): Determines whether or not to show the `Items Per Page` select component.
-- `itemCountOptions` (Array, default:`[10,20,30,40]`): The options available in the `Items Per Page` select component.
+- `itemCountOptions` (Array, default:`[10,20,30,40]`): The options available in the `Results Per Page` select component.
 - `selectedCountOption`(Number): The selected option from the `itemCountOptions` select component.
 
 **Events:**

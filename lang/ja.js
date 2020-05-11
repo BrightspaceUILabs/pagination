@@ -3,5 +3,6 @@
 export default {
 	page_previous : "前のページ",
 	page_next : "次のページ",
+	page_size_option : "ページごとの {count}",
 	page_size_title : "ページごとの結果",
 };

@@ -79,8 +79,14 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 		this.maxPageNumber = 1;
 	}
 
+	static async getLocalizeResources(langs) {
+		return getLocalizeResources(langs, baseUrl);
+	}
+
 	_submitPageNumber(e) {
-		console.log(e.target.value);
+		if (e.target.value === this.pageNumber) {
+			return;
+		}
 
 		const event = new CustomEvent('pagination-page-change', {
 			detail: {
@@ -146,7 +152,7 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 			${this.showItemCountSelect ? html`
 				<select class="d2l-input-select" @change="${this._pageCounterChange}">
 					${this.itemCountOptions.map(item => html`
-						<option ?selected="${this.selectedCountOption === item}" value="${item}">${item} per page</option>
+						<option ?selected="${this.selectedCountOption === item}" value="${item}">${item} ${}</option>
 					`)}
 				</select>` : null }
 
