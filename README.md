@@ -34,7 +34,7 @@ npm install @brightspace-ui-labs/pagination
 <script type="module">
     import '@brightspace-ui-labs/pagination/pagination.js';
 </script>
-<d2l-labs-pagination>My element</d2l-labs-pagination>
+<d2l-labs-pagination></d2l-labs-pagination>
 ```
 
 ## Developing, Testing and Contributing

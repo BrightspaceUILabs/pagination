@@ -15,9 +15,38 @@
 	<body>
 		<d2l-demo-page page-title="d2l-labs-pagination">
 			<h2>d2l-labs-pagination</h2>
+
 			<d2l-demo-snippet>
-				<d2l-labs-pagination></d2l-labs-pagination>
+				<d2l-labs-pagination id="pagination-1" pageNumber="1" maxPageNumber="1"></d2l-labs-pagination>
+			</d2l-demo-snippet>
+
+			<d2l-demo-snippet>
+				<d2l-labs-pagination id="pagination-2" pageNumber="2" maxPageNumber="3"></d2l-labs-pagination>
+			</d2l-demo-snippet>
+
+			<d2l-demo-snippet>
+				<d2l-labs-pagination id="pagination-3" pageNumber="5" maxPageNumber="5"></d2l-labs-pagination>
+			</d2l-demo-snippet>
+
+			<d2l-demo-snippet>
+				<d2l-labs-pagination id="pagination-4" pageNumber="5" maxPageNumber="5" showItemCountSelect></d2l-labs-pagination>
 			</d2l-demo-snippet>
 		</d2l-demo-page>
+
+		<script>
+			document.getElementById('pagination-1').addEventListener('pagination-page-changed', pageChanged);
+			document.getElementById('pagination-2').addEventListener('pagination-page-changed', pageChanged);
+			document.getElementById('pagination-3').addEventListener('pagination-page-changed', pageChanged);
+			document.getElementById('pagination-4').addEventListener('pagination-page-changed', pageChanged);
+			document.getElementById('pagination-4').addEventListener('pagination-item-counter-changed', itemsPerPageChanged);
+
+			function pageChanged(e) {
+				window.alert(`Navigating to page ${e.detail.page}.`);
+			}
+
+			function itemsPerPageChanged(e) {
+				window.alert(`Displaying ${e.detail.itemCount} items per page.`);
+			}
+		</script>
 	</body>
 </html>
