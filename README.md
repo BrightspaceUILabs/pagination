@@ -40,11 +40,9 @@ npm install @brightspace-ui-labs/pagination
 **Properties:**
 - `pageNumber` (required, Number): The current page number
 - `maxPageNumber` (required, Number): The highest page number the user could navigate to
-- `nextPageText` (String, default:`To next page`): The screen reader and tooltip text for the `Next Page` button.
-- `previousPageText` (String, default:`To previous page`): The screen reader and tooltip text for the `Previous Page` button.
-- `showItemCountSelect` (Boolean, default:`False`): Determines whether or not to show the `Items Per Page` select component.
+- `showItemCountSelect` (Boolean, default:`False`): Determines whether or not to show the `Results Per Page` select component.
 - `itemCountOptions` (Array, default:`[10,20,30,40]`): The options available in the `Results Per Page` select component.
-- `selectedCountOption`(Number): The selected option from the `itemCountOptions` select component.
+- `selectedCountOption`(Number): The starting `itemCountOptions` option to display in the `Results Per Page` select component.
 
 **Events:**
 The `d2l-labs-pagination` dispatches the `pagination-page-change` event when either the navigation buttons are pressed, or the page number is modified to point to a valid page number. It will return the number of the requested page:
