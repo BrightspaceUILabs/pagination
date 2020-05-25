@@ -65,7 +65,8 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 	}
 
 	_submitPageNumber(e) {
-		if (e.target.value === this.pageNumber) {
+		if (!this._isValidNumber(e.target.value)) {
+			e.target.value = this.pageNumber.toString();
 			return;
 		}
 
@@ -122,11 +123,24 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 		return this.pageNumber >= this.maxPageNumber;
 	}
 
+	_isValidNumber(input) {
+		const value = Number(input);
+		return !isNaN(value) &&
+            isFinite(value) &&
+            Math.floor(value) === value &&
+            value >= 1 &&
+			value <= this.maxPageNumber &&
+			value !== Number(this.pageNumber);
+	}
+
 	render() {
 		return html`
 		<div class="pagination-container">
 			<d2l-button-icon icon="d2l-tier1:chevron-left" @click="${this._navToPreviousPage}" text="${this.localize('page_previous')}" ?disabled=${this.disablePreviousPageButton()}></d2l-button-icon>
-			<d2l-input-text class="page-number" aria-label="page_number_title" value="${this.pageNumber}" @blur="${this._submitPageNumber}"></d2l-input-text>
+			<d2l-input-text class="page-number"
+			autocomplete="off"
+			autocorrect="off"
+			type="text" aria-label="page_number_title" value="${this.pageNumber}" @blur="${this._submitPageNumber}"></d2l-input-text>
 			<span class="page-max">∕ ${this.maxPageNumber}</span>
 			<d2l-button-icon icon="d2l-tier1:chevron-right" @click="${this._navToNextPage}" text="${this.localize('page_next')}" ?disabled=${this.disableNextPageButton()}></d2l-button-icon>
 
