@@ -45,6 +45,7 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 
 			.page-max {
 				margin-right: .25rem;
+				white-space: nowrap;
 			}
 
 			.d2l-input-select {
