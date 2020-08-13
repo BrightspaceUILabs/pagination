@@ -81,6 +81,12 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 		this.dispatchEvent(event);
 	}
 
+	_handleKeydown(e) {
+		if (e.key === 'Enter') {
+			this._submitPageNumber(e);
+		}
+	}
+
 	_navToPreviousPage() {
 		const newPageNumber = this.pageNumber - 1;
 		const event = new CustomEvent('pagination-page-change', {
@@ -138,10 +144,16 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 		return html`
 		<div class="pagination-container">
 			<d2l-button-icon icon="d2l-tier1:chevron-left" @click="${this._navToPreviousPage}" text="${this.localize('page_previous')}" ?disabled=${this.disablePreviousPageButton()}></d2l-button-icon>
-			<d2l-input-text class="page-number"
-			autocomplete="off"
-			autocorrect="off"
-			type="text" aria-label="page_number_title" value="${this.pageNumber}" @blur="${this._submitPageNumber}"></d2l-input-text>
+			<d2l-input-text
+				class="page-number"
+				autocomplete="off"
+				autocorrect="off"
+				type="text"
+				aria-label="page_number_title"
+				value="${this.pageNumber}"
+				@blur="${this._submitPageNumber}"
+				@keydown="${this._handleKeydown}"
+			></d2l-input-text>
 			<span class="page-max">∕ ${this.maxPageNumber}</span>
 			<d2l-button-icon icon="d2l-tier1:chevron-right" @click="${this._navToNextPage}" text="${this.localize('page_next')}" ?disabled=${this.disableNextPageButton()}></d2l-button-icon>
 
