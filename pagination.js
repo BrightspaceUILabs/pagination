@@ -146,7 +146,12 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 			<d2l-button-icon icon="d2l-tier1:chevron-right" @click="${this._navToNextPage}" text="${this.localize('page_next')}" ?disabled=${this.disableNextPageButton()}></d2l-button-icon>
 
 			${this.showItemCountSelect ? html`
-				<select title="${this.localize('page_size_title')}" class="d2l-input-select" @change="${this._pageCounterChange}">
+				<select
+					aria-label="${this.localize('page_size_title')}"
+					title="${this.localize('page_size_title')}"
+					class="d2l-input-select"
+					@change="${this._pageCounterChange}"
+				>
 					${this.itemCountOptions.map(item => html`
 						<option ?selected="${this.selectedCountOption === item}" value="${item}">${this.localize('page_size_option', 'count', item)}</option>
 					`)}
