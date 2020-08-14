@@ -19,18 +19,32 @@
 			</template>
 		</test-fixture>
 
+		<test-fixture id="full">
+			<template>
+				<d2l-labs-pagination
+					pageNumber="1"
+					maxPageNumber="6"
+					showItemCountSelect="true"
+					itemCountOptions="[10,20,50,100]"
+					selectedCountOption="20"
+				></d2l-labs-pagination>
+			</template>
+		</test-fixture>
+
 		<script type="module">
 			import { runAxe } from '@brightspace-ui/core/tools/a11y-test-helper.js';
 
 			describe('d2l-labs-pagination', () => {
-				let element;
 
-				beforeEach(async() => {
-					element = fixture('basic');
+				it('should pass all axe tests (basic)', async() => {
+					const element = fixture('basic');
 					await element.updateComplete;
+					await runAxe(element);
 				});
 
-				it('should pass all axe tests', async() => {
+				it('should pass all axe tests (full)', async() => {
+					const element = fixture('full');
+					await element.updateComplete;
 					await runAxe(element);
 				});
 
