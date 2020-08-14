@@ -11,7 +11,7 @@
   },
   "files": [
     "pagination.js",
-    "localization.js",
+    "lang/localization.js",
     ".gitignore",
     "/lang"
   ],
@@ -46,12 +46,8 @@
   },
   "dependencies": {
     "@brightspace-ui/core": "^1.43.4",
-    "@polymer/polymer": "^3.4.1",
-    "@polymer/test-fixture": "^4.0.2",
     "@webcomponents/webcomponentsjs": "^2",
-    "lit-element": "^2",
-    "polymer-cli": "^1.9.11",
-    "wct-mocha": "^1.1.0"
+    "lit-element": "^2"
   },
   "homepage": "https://github.com/BrightspaceUILabs/paginatione#readme",
   "main": "index.js",
