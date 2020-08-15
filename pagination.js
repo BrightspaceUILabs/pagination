@@ -58,6 +58,7 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 		this.maxPageNumber = 1;
 	}
 
+	// TODO: page number types are inconsistent depending on if event is fired from arrows or from Enter keypress
 	_submitPageNumber(e) {
 		if (!this._isValidNumber(e.target.value)) {
 			e.target.value = this.pageNumber.toString();
