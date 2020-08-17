@@ -41,7 +41,7 @@ describe('pagination', () => {
 			const pageInput = el.shadowRoot.querySelector('d2l-input-text');
 			const maxPageIndicator = el.shadowRoot.querySelector('span.page-max');
 			expect(pageInput.value).to.equal('3');
-			expect(maxPageIndicator.innerText).to.equal('/ 8');
+			expect(maxPageIndicator.innerText).to.equal('∕ 8');
 
 			// by default, it should not render the page size selector
 			const pageSizeSelector = el.shadowRoot.querySelector('select');
@@ -61,7 +61,7 @@ describe('pagination', () => {
 			const pageNumberInput = el.shadowRoot.querySelector('d2l-input-text');
 			const maxPageIndicator = el.shadowRoot.querySelector('span.page-max');
 			expect(pageNumberInput.value).to.equal('3');
-			expect(maxPageIndicator.innerText).to.equal('/ 8');
+			expect(maxPageIndicator.innerText).to.equal('∕ 8');
 
 			const pageSizeSelector = el.shadowRoot.querySelector('select');
 			expect(pageSizeSelector).to.not.be.null;

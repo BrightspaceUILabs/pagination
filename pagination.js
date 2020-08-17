@@ -163,7 +163,8 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 					@blur="${this._submitPageNumber}"
 					@keydown="${this._handleKeydown}"
 				></d2l-input-text>
-				<span class="page-max">/ ${this.maxPageNumber}</span>
+				<!-- Note: this uses a division slash rather than a regular slash -->
+				<span class="page-max">∕ ${this.maxPageNumber}</span>
 				<d2l-button-icon icon="d2l-tier1:chevron-right" @click="${this._navToNextPage}" text="${this.localize('page_next')}" ?disabled=${this.disableNextPageButton()}></d2l-button-icon>
 			</div>
 
