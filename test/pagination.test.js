@@ -194,7 +194,7 @@ describe('pagination', () => {
 				pageNumberInput.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
 
 				const event = await listener;
-				expect(event.detail.page).to.equal('3');
+				expect(event.detail.page).to.equal(3);
 			});
 
 			it('should fire when new page number is valid and page input element loses focus', async() => {
@@ -208,7 +208,7 @@ describe('pagination', () => {
 				inputEl.blur();
 
 				const event = await listener;
-				expect(event.detail.page).to.equal('3');
+				expect(event.detail.page).to.equal(3);
 			});
 		});
 
@@ -239,7 +239,10 @@ describe('pagination', () => {
 
 				const result = await verifyEventTimeout(listener, 'no event fired');
 				expect(result).not.to.equal('no event fired');
-				expect(result.detail.page).to.equal('5');
+				expect(result.detail.page).to.equal(5);
+
+				// the input element's value should also be changed to the new value
+				expect(pageNumberInput.value).to.equal('5');
 			});
 
 			it('should not fire when new page number is an invalid page number', async() => {
@@ -251,12 +254,18 @@ describe('pagination', () => {
 				let result = await verifyEventTimeout(listener, 'no event fired');
 				expect(result).to.equal('no event fired');
 
+				// the input element's value should also reset to the old value
+				expect(pageNumberInput.value).to.equal('4');
+
 				listener = oneEvent(el, 'pagination-page-change');
 				pageNumberInput.value = '7';
 				pageNumberInput.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
 
 				result = await verifyEventTimeout(listener, 'no event fired');
 				expect(result).to.equal('no event fired');
+
+				// the input element's value should also reset to the old value
+				expect(pageNumberInput.value).to.equal('4');
 			});
 
 			it('should not fire when new page number is not a number', async() => {
@@ -267,6 +276,7 @@ describe('pagination', () => {
 
 				const result = await verifyEventTimeout(listener, 'no event fired');
 				expect(result).to.equal('no event fired');
+				expect(pageNumberInput.value).to.equal('4');
 			});
 
 			it('should not fire in response to keypresses that are not Enter', async() => {
@@ -277,6 +287,7 @@ describe('pagination', () => {
 
 				const result = await verifyEventTimeout(listener, 'no event fired');
 				expect(result).to.equal('no event fired');
+				expect(pageNumberInput.value).to.equal('3');
 			});
 		});
 
@@ -298,7 +309,7 @@ describe('pagination', () => {
 				pageSizeSelector.dispatchEvent(new Event('change'));
 
 				const event = await listener;
-				expect(event.detail.itemCount).to.equal('10');
+				expect(event.detail.itemCount).to.equal(10);
 			});
 		});
 	});
