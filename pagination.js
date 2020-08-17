@@ -23,15 +23,34 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 	static get styles() {
 		return [selectStyles, css`
 			:host {
-				display: inline-block;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				align-content: center;
+				justify-content: center;
+				white-space: nowrap;
 			}
+
 			:host([hidden]) {
 				display: none;
 			}
 
+			@media (max-width: 544px) {
+				:host {
+					flex-direction: column-reverse;
+				}
+			}
+
 			.pagination-container {
-				display: flex;
-				align-items: center;
+				display: block;
+			}
+
+			.page-selector-container {
+				margin: 15px;
+			}
+
+			.page-selector-container > * {
+				display: inline-flex;
 			}
 
 			.page-number {
@@ -42,11 +61,7 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 
 			.page-max {
 				margin-right: .25rem;
-				white-space: nowrap;
-			}
-
-			.d2l-input-select {
-				margin-left: 1rem;
+				vertical-align: middle;
 			}
 		`];
 	}
@@ -136,33 +151,36 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 
 	render() {
 		return html`
-		<div class="pagination-container">
-			<d2l-button-icon icon="d2l-tier1:chevron-left" @click="${this._navToPreviousPage}" text="${this.localize('page_previous')}" ?disabled=${this.disablePreviousPageButton()}></d2l-button-icon>
-			<d2l-input-text
-				class="page-number"
-				autocomplete="off"
-				autocorrect="off"
-				type="text"
-				aria-label="page_number_title"
-				value="${this.pageNumber}"
-				@blur="${this._submitPageNumber}"
-				@keydown="${this._handleKeydown}"
-			></d2l-input-text>
-			<span class="page-max">∕ ${this.maxPageNumber}</span>
-			<d2l-button-icon icon="d2l-tier1:chevron-right" @click="${this._navToNextPage}" text="${this.localize('page_next')}" ?disabled=${this.disableNextPageButton()}></d2l-button-icon>
+			<div class="pagination-container page-selector-container">
+				<d2l-button-icon icon="d2l-tier1:chevron-left" @click="${this._navToPreviousPage}" text="${this.localize('page_previous')}" ?disabled=${this.disablePreviousPageButton()}></d2l-button-icon>
+				<d2l-input-text
+					class="page-number"
+					autocomplete="off"
+					autocorrect="off"
+					type="text"
+					aria-label="page_number_title"
+					value="${this.pageNumber}"
+					@blur="${this._submitPageNumber}"
+					@keydown="${this._handleKeydown}"
+				></d2l-input-text>
+				<span class="page-max">/ ${this.maxPageNumber}</span>
+				<d2l-button-icon icon="d2l-tier1:chevron-right" @click="${this._navToNextPage}" text="${this.localize('page_next')}" ?disabled=${this.disableNextPageButton()}></d2l-button-icon>
+			</div>
 
 			${this.showItemCountSelect ? html`
-				<select
-					aria-label="${this.localize('page_size_title')}"
-					title="${this.localize('page_size_title')}"
-					class="d2l-input-select"
-					@change="${this._pageCounterChange}"
-				>
-					${this.itemCountOptions.map(item => html`
-						<option ?selected="${this.selectedCountOption === item}" value="${item}">${this.localize('page_size_option', 'count', item)}</option>
-					`)}
-				</select>` : null }
-		</div>
+				<div class="pagination-container">
+					<select
+						aria-label="${this.localize('page_size_title')}"
+						title="${this.localize('page_size_title')}"
+						class="d2l-input-select"
+						@change="${this._pageCounterChange}"
+					>
+						${this.itemCountOptions.map(item => html`
+							<option ?selected="${this.selectedCountOption === item}" value="${item}">${this.localize('page_size_option', 'count', item)}</option>
+						`)}
+					</select>
+				</div>
+			` : null }
 		`;
 	}
 }
