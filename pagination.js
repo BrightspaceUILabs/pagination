@@ -142,20 +142,21 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 	render() {
 		return html`
 			<div class="pagination-container page-selector-container">
-				<d2l-button-icon icon="d2l-tier1:chevron-left" @click="${this._navToPreviousPage}" text="${this.localize('page_previous')}" ?disabled=${this.disablePreviousPageButton()}></d2l-button-icon>
+				<d2l-button-icon icon="tier1:chevron-left" @click="${this._navToPreviousPage}" text="${this.localize('page_previous')}" ?disabled=${this.disablePreviousPageButton()}></d2l-button-icon>
 				<d2l-input-text
 					class="page-number"
 					autocomplete="off"
 					autocorrect="off"
 					type="text"
-					aria-label="page_number_title"
+					aria-label="${this.localize('page_number_title', {pageNumber: this.pageNumber, maxPageNumber: this.maxPageNumber})}"
 					value="${this.pageNumber}"
 					@blur="${this._submitPageNumber}"
 					@keydown="${this._handleKeydown}"
 				></d2l-input-text>
 				<!-- Note: this uses a division slash rather than a regular slash -->
-				<span class="page-max">∕ ${this.maxPageNumber}</span>
-				<d2l-button-icon icon="d2l-tier1:chevron-right" @click="${this._navToNextPage}" text="${this.localize('page_next')}" ?disabled=${this.disableNextPageButton()}></d2l-button-icon>
+				<!-- a11y note: setting aria-hidden to true because it's covered by the previous element -->
+				<span class="page-max" aria-hidden="true">∕ ${this.maxPageNumber}</span>
+				<d2l-button-icon icon="tier1:chevron-right" @click="${this._navToNextPage}" text="${this.localize('page_next')}" ?disabled=${this.disableNextPageButton()}></d2l-button-icon>
 			</div>
 
 			${this.showItemCountSelect ? html`
