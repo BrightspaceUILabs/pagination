@@ -11,19 +11,19 @@
   },
   "files": [
     "pagination.js",
-    "localization.js",
+    "lang/localization.js",
     ".gitignore",
     "/lang"
   ],
   "scripts": {
     "lint": "npm run lint:eslint && npm run lint:lit",
     "lint:eslint": "eslint . --ext .js,.html",
-    "lint:lit": "lit-analyzer pagination.js demo test",
+    "lint:lit": "lit-analyzer --rules.no-complex-attribute-binding off --rules.no-incompatible-type-binding off pagination.js demo test",
     "start": "es-dev-server --app-index demo/index.html --node-resolve --dedupe --open --watch",
-    "test": "npm run lint && npm run test:local",
-    "test:local": "polymer test --skip-plugin sauce",
-    "test:sauce": "polymer test --skip-plugin local",
-    "test:travis": "polymer test --config-file wct.conf-travis.json"
+    "test": "npm run lint && npm run test:headless",
+    "test:headless": "karma start",
+    "test:headless:watch": "karma start --auto-watch=true --single-run=false",
+    "test:sauce": "karma start karma.sauce.conf.js"
   },
   "author": "D2L Corporation",
   "license": "Apache-2.0",
@@ -46,12 +46,8 @@
   },
   "dependencies": {
     "@brightspace-ui/core": "^1.43.4",
-    "@polymer/polymer": "^3.4.1",
-    "@polymer/test-fixture": "^4.0.2",
     "@webcomponents/webcomponentsjs": "^2",
-    "lit-element": "^2",
-    "polymer-cli": "^1.9.11",
-    "wct-mocha": "^1.1.0"
+    "lit-element": "^2"
   },
   "homepage": "https://github.com/BrightspaceUILabs/paginatione#readme",
   "main": "index.js",

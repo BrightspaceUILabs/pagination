@@ -1,14 +1,11 @@
 import '@brightspace-ui/core/components/button/button-icon.js';
 import '@brightspace-ui/core/components/inputs/input-text.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
-import { getLocalizeResources } from './localization.js';
-import { LocalizeMixin } from '@brightspace-ui/core/mixins/localize-mixin.js';
+import { Localizer } from './lang/localization.js';
 import { RtlMixin } from '@brightspace-ui/core/mixins/rtl-mixin.js';
 import { selectStyles } from '@brightspace-ui/core/components/inputs/input-select-styles.js';
 
-const baseUrl = import.meta.url;
-
-class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
+class Pagination extends RtlMixin(Localizer(LitElement)) {
 
 	static get properties() {
 		return {
@@ -52,10 +49,6 @@ class Pagination extends RtlMixin(LocalizeMixin(LitElement)) {
 				margin-left: 1rem;
 			}
 		`];
-	}
-
-	static async getLocalizeResources(langs) {
-		return getLocalizeResources(langs, baseUrl);
 	}
 
 	constructor() {
