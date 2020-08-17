@@ -35,11 +35,13 @@ describe('pagination', () => {
 
 	describe('render', () => {
 		it('should render page number and max page number correctly', async() => {
-			const el = await fixture(html`<d2l-labs-pagination pageNumber="3" maxPageNumber="8"></d2l-labs-pagination>`);
+			const el = await fixture(
+				html`<d2l-labs-pagination pageNumber="3" maxPageNumber="8"></d2l-labs-pagination>`
+			);
 			const pageInput = el.shadowRoot.querySelector('d2l-input-text');
 			const maxPageIndicator = el.shadowRoot.querySelector('span.page-max');
 			expect(pageInput.value).to.equal('3');
-			expect(maxPageIndicator.innerText).to.equal('∕ 8'); // this isn't a regular slash
+			expect(maxPageIndicator.innerText).to.equal('∕ 8');
 
 			// by default, it should not render the page size selector
 			const pageSizeSelector = el.shadowRoot.querySelector('select');
@@ -59,7 +61,7 @@ describe('pagination', () => {
 			const pageNumberInput = el.shadowRoot.querySelector('d2l-input-text');
 			const maxPageIndicator = el.shadowRoot.querySelector('span.page-max');
 			expect(pageNumberInput.value).to.equal('3');
-			expect(maxPageIndicator.innerText).to.equal('∕ 8'); // this isn't a regular slash
+			expect(maxPageIndicator.innerText).to.equal('∕ 8');
 
 			const pageSizeSelector = el.shadowRoot.querySelector('select');
 			expect(pageSizeSelector).to.not.be.null;
@@ -90,13 +92,13 @@ describe('pagination', () => {
 			}
 
 			describe('ltr', () => {
-				it('should disable left button (ltr)', async() => {
+				it('should disable left button', async() => {
 					const {leftButton, rightButton} = await getPaginationEl(1, 5, 'ltr');
 					expect(leftButton.disabled).to.be.true;
 					expect(rightButton.disabled).to.be.false;
 				});
 
-				it('should disable right button (ltr)', async() => {
+				it('should disable right button', async() => {
 					const {leftButton, rightButton} = await getPaginationEl(5, 5, 'ltr');
 					expect(leftButton.disabled).to.be.false;
 					expect(rightButton.disabled).to.be.true;
@@ -122,17 +124,17 @@ describe('pagination', () => {
 			});
 
 			describe('rtl', () => {
-				// in rtl, the "left" button is actually on the right side and mirrored so it looks like a right arrow
-				// so the "left" button is still the one that is disabled, even though it's really the right button
-				// (and vice-versa for the "right" button, which is actually on the left)
 
-				it('should disable left button (rtl)', async() => {
+				// in rtl, the "left" button is actually on the right side and mirrored so it looks like a right arrow
+				// so on page 1, the "left" button is still the one that's disabled, even though it's really the button
+				// on the right side (and vice-versa for the "right" button, which is actually on the left side)
+				it('should disable left button', async() => {
 					const {leftButton, rightButton} = await getPaginationEl(1, 5, 'rtl');
 					expect(leftButton.disabled).to.be.true;
 					expect(rightButton.disabled).to.be.false;
 				});
 
-				it('should disable right button (rtl)', async() => {
+				it('should disable right button', async() => {
 					const {leftButton, rightButton} = await getPaginationEl(5, 5, 'rtl');
 					expect(leftButton.disabled).to.be.false;
 					expect(rightButton.disabled).to.be.true;
