@@ -121,11 +121,11 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 		this.dispatchEvent(event);
 	}
 
-	disablePreviousPageButton() {
+	_disablePreviousPageButton() {
 		return this.pageNumber <= 1;
 	}
 
-	disableNextPageButton() {
+	_disableNextPageButton() {
 		return this.pageNumber >= this.maxPageNumber;
 	}
 
@@ -142,7 +142,7 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 	render() {
 		return html`
 			<div class="pagination-container page-selector-container">
-				<d2l-button-icon icon="tier1:chevron-left" @click="${this._navToPreviousPage}" text="${this.localize('page_previous')}" ?disabled=${this.disablePreviousPageButton()}></d2l-button-icon>
+				<d2l-button-icon icon="tier1:chevron-left" @click="${this._navToPreviousPage}" text="${this.localize('page_previous')}" ?disabled=${this._disablePreviousPageButton()}></d2l-button-icon>
 				<d2l-input-text
 					class="page-number"
 					autocomplete="off"
@@ -157,7 +157,7 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 				<!-- Note: this uses a division slash rather than a regular slash -->
 				<!-- a11y note: setting aria-hidden to true because it's covered by the previous element -->
 				<span class="page-max" aria-hidden="true">∕ ${this.maxPageNumber}</span>
-				<d2l-button-icon icon="tier1:chevron-right" @click="${this._navToNextPage}" text="${this.localize('page_next')}" ?disabled=${this.disableNextPageButton()}></d2l-button-icon>
+				<d2l-button-icon icon="tier1:chevron-right" @click="${this._navToNextPage}" text="${this.localize('page_next')}" ?disabled=${this._disableNextPageButton()}></d2l-button-icon>
 			</div>
 
 			${this.showItemCountSelect ? html`
