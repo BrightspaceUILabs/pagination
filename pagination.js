@@ -148,7 +148,8 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 					autocomplete="off"
 					autocorrect="off"
 					type="text"
-					aria-label="${this.localize('page_number_title', {pageNumber: this.pageNumber, maxPageNumber: this.maxPageNumber})}"
+					label="${this.localize('page_number_title', {pageNumber: this.pageNumber, maxPageNumber: this.maxPageNumber})}"
+					label-hidden
 					value="${this.pageNumber}"
 					@blur="${this._submitPageNumber}"
 					@keydown="${this._handleKeydown}"

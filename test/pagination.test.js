@@ -85,8 +85,8 @@ describe('pagination', () => {
 						dir="${dir}"
 					></d2l-labs-pagination>`
 				);
-				const leftButton = el.shadowRoot.querySelector('d2l-button-icon[icon="d2l-tier1:chevron-left"]');
-				const rightButton = el.shadowRoot.querySelector('d2l-button-icon[icon="d2l-tier1:chevron-right"]');
+				const leftButton = el.shadowRoot.querySelector('d2l-button-icon[icon="tier1:chevron-left"]');
+				const rightButton = el.shadowRoot.querySelector('d2l-button-icon[icon="tier1:chevron-right"]');
 
 				return {el, leftButton, rightButton};
 			}
@@ -171,8 +171,8 @@ describe('pagination', () => {
 			});
 
 			it('should fire when arrows are clickable and have been clicked', async() => {
-				const leftButton = el.shadowRoot.querySelector('d2l-button-icon[icon="d2l-tier1:chevron-left"]');
-				const rightButton = el.shadowRoot.querySelector('d2l-button-icon[icon="d2l-tier1:chevron-right"]');
+				const leftButton = el.shadowRoot.querySelector('d2l-button-icon[icon="tier1:chevron-left"]');
+				const rightButton = el.shadowRoot.querySelector('d2l-button-icon[icon="tier1:chevron-right"]');
 
 				let listener = oneEvent(el, 'pagination-page-change');
 				leftButton.click();
