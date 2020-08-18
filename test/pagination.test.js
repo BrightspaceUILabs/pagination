@@ -39,7 +39,7 @@ describe('pagination', () => {
 				html`<d2l-labs-pagination pageNumber="3" maxPageNumber="8"></d2l-labs-pagination>`
 			);
 			const pageInput = el.shadowRoot.querySelector('d2l-input-text');
-			const maxPageIndicator = el.shadowRoot.querySelector('span.page-max');
+			const maxPageIndicator = el.shadowRoot.querySelector('span.d2l-page-max-text');
 			expect(pageInput.value).to.equal('3');
 			expect(maxPageIndicator.innerText).to.equal('∕ 8');
 
@@ -59,7 +59,7 @@ describe('pagination', () => {
 				></d2l-labs-pagination>`
 			);
 			const pageNumberInput = el.shadowRoot.querySelector('d2l-input-text');
-			const maxPageIndicator = el.shadowRoot.querySelector('span.page-max');
+			const maxPageIndicator = el.shadowRoot.querySelector('span.d2l-page-max-text');
 			expect(pageNumberInput.value).to.equal('3');
 			expect(maxPageIndicator.innerText).to.equal('∕ 8');
 
@@ -85,8 +85,8 @@ describe('pagination', () => {
 						dir="${dir}"
 					></d2l-labs-pagination>`
 				);
-				const leftButton = el.shadowRoot.querySelector('d2l-button-icon[icon="d2l-tier1:chevron-left"]');
-				const rightButton = el.shadowRoot.querySelector('d2l-button-icon[icon="d2l-tier1:chevron-right"]');
+				const leftButton = el.shadowRoot.querySelector('d2l-button-icon[icon="tier1:chevron-left"]');
+				const rightButton = el.shadowRoot.querySelector('d2l-button-icon[icon="tier1:chevron-right"]');
 
 				return {el, leftButton, rightButton};
 			}
@@ -171,8 +171,8 @@ describe('pagination', () => {
 			});
 
 			it('should fire when arrows are clickable and have been clicked', async() => {
-				const leftButton = el.shadowRoot.querySelector('d2l-button-icon[icon="d2l-tier1:chevron-left"]');
-				const rightButton = el.shadowRoot.querySelector('d2l-button-icon[icon="d2l-tier1:chevron-right"]');
+				const leftButton = el.shadowRoot.querySelector('d2l-button-icon[icon="tier1:chevron-left"]');
+				const rightButton = el.shadowRoot.querySelector('d2l-button-icon[icon="tier1:chevron-right"]');
 
 				let listener = oneEvent(el, 'pagination-page-change');
 				leftButton.click();

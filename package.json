@@ -16,9 +16,10 @@
     "/lang"
   ],
   "scripts": {
-    "lint": "npm run lint:eslint && npm run lint:lit",
+    "lint": "npm run lint:eslint && npm run lint:lit && npm run lint:style",
     "lint:eslint": "eslint . --ext .js,.html",
     "lint:lit": "lit-analyzer --rules.no-complex-attribute-binding off --rules.no-incompatible-type-binding off pagination.js demo test",
+    "lint:style": "stylelint \"**/*.js\"",
     "start": "es-dev-server --app-index demo/index.html --node-resolve --dedupe --open --watch",
     "test": "npm run lint && npm run test:headless",
     "test:headless": "karma start",
@@ -28,6 +29,7 @@
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@brightspace-ui/stylelint-config": "0.0.1",
     "@brightspace-ui/visual-diff": "^1",
     "@open-wc/testing": "^2",
     "@open-wc/testing-karma": "^3",
@@ -42,7 +44,8 @@
     "frau-ci": "^1",
     "karma-sauce-launcher": "^2",
     "lit-analyzer": "^1",
-    "puppeteer": "^1"
+    "puppeteer": "^1",
+    "stylelint": "^13.6.1"
   },
   "dependencies": {
     "@brightspace-ui/core": "^1.43.4",
