@@ -23,10 +23,10 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 	static get styles() {
 		return [selectStyles, css`
 			:host {
+				align-content: center;
+				align-items: center;
 				display: flex;
 				flex-direction: row;
-				align-items: center;
-				align-content: center;
 				justify-content: center;
 				white-space: nowrap;
 			}
@@ -41,26 +41,26 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 				}
 			}
 
-			.pagination-container {
+			.d2l-pagination-container {
 				display: block;
 			}
 
-			.page-selector-container {
+			.d2l-page-selector-container {
 				margin: 15px;
 			}
 
-			.page-selector-container > * {
+			.d2l-page-selector-container > * {
 				display: inline-flex;
 			}
 
-			.page-number {
-				margin-left: .25rem;
-				margin-right: .25rem;
+			.d2l-page-number {
+				margin-left: 0.25rem;
+				margin-right: 0.25rem;
 				width: 4em;
 			}
 
-			.page-max {
-				margin-right: .25rem;
+			.d2l-page-max-text {
+				margin-right: 0.25rem;
 				vertical-align: middle;
 			}
 		`];
@@ -141,10 +141,10 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 
 	render() {
 		return html`
-			<div class="pagination-container page-selector-container">
+			<div class="d2l-pagination-container d2l-page-selector-container">
 				<d2l-button-icon icon="tier1:chevron-left" @click="${this._navToPreviousPage}" text="${this.localize('page_previous')}" ?disabled=${this._disablePreviousPageButton()}></d2l-button-icon>
 				<d2l-input-text
-					class="page-number"
+					class="d2l-page-number"
 					autocomplete="off"
 					autocorrect="off"
 					type="text"
@@ -156,12 +156,12 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 				></d2l-input-text>
 				<!-- Note: this uses a division slash rather than a regular slash -->
 				<!-- a11y note: setting aria-hidden to true because it's covered by the previous element -->
-				<span class="page-max" aria-hidden="true">∕ ${this.maxPageNumber}</span>
+				<span class="d2l-page-max-text" aria-hidden="true">∕ ${this.maxPageNumber}</span>
 				<d2l-button-icon icon="tier1:chevron-right" @click="${this._navToNextPage}" text="${this.localize('page_next')}" ?disabled=${this._disableNextPageButton()}></d2l-button-icon>
 			</div>
 
 			${this.showItemCountSelect ? html`
-				<div class="pagination-container">
+				<div class="d2l-pagination-container">
 					<select
 						aria-label="${this.localize('page_size_title')}"
 						title="${this.localize('page_size_title')}"

@@ -39,7 +39,7 @@ describe('pagination', () => {
 				html`<d2l-labs-pagination pageNumber="3" maxPageNumber="8"></d2l-labs-pagination>`
 			);
 			const pageInput = el.shadowRoot.querySelector('d2l-input-text');
-			const maxPageIndicator = el.shadowRoot.querySelector('span.page-max');
+			const maxPageIndicator = el.shadowRoot.querySelector('span.d2l-page-max-text');
 			expect(pageInput.value).to.equal('3');
 			expect(maxPageIndicator.innerText).to.equal('∕ 8');
 
@@ -59,7 +59,7 @@ describe('pagination', () => {
 				></d2l-labs-pagination>`
 			);
 			const pageNumberInput = el.shadowRoot.querySelector('d2l-input-text');
-			const maxPageIndicator = el.shadowRoot.querySelector('span.page-max');
+			const maxPageIndicator = el.shadowRoot.querySelector('span.d2l-page-max-text');
 			expect(pageNumberInput.value).to.equal('3');
 			expect(maxPageIndicator.innerText).to.equal('∕ 8');
 
