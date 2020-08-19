@@ -14,11 +14,11 @@ describe('pagination', () => {
 		it('should pass all axe tests (full)', async() => {
 			const el = await fixture(
 				html`<d2l-labs-pagination
-					pageNumber="1"
-					maxPageNumber="6"
-					showItemCountSelect
-					itemCountOptions="[10, 20, 50, 100]"
-					selectedCountOption="20"
+					page-number="1"
+					max-page-number="6"
+					show-item-count-select
+					item-count-options="[10, 20, 50, 100]"
+					selected-count-option="20"
 				>
 				</d2l-labs-pagination>`
 			);
@@ -36,7 +36,7 @@ describe('pagination', () => {
 	describe('render', () => {
 		it('should render page number and max page number correctly', async() => {
 			const el = await fixture(
-				html`<d2l-labs-pagination pageNumber="3" maxPageNumber="8"></d2l-labs-pagination>`
+				html`<d2l-labs-pagination page-number="3" max-page-number="8"></d2l-labs-pagination>`
 			);
 			const pageInput = el.shadowRoot.querySelector('d2l-input-text');
 			const maxPageIndicator = el.shadowRoot.querySelector('span.d2l-page-max-text');
@@ -51,11 +51,11 @@ describe('pagination', () => {
 		it('should render page size selector with correct options and initial selection', async() => {
 			const el = await fixture(html`
 				<d2l-labs-pagination
-					pageNumber="3"
-					maxPageNumber="8"
-					showItemCountSelect
-					itemCountOptions="[2,5,37,159]"
-					selectedCountOption="37"
+					page-number="3"
+					max-page-number="8"
+					show-item-count-select
+					item-count-options="[2,5,37,159]"
+					selected-count-option="37"
 				></d2l-labs-pagination>`
 			);
 			const pageNumberInput = el.shadowRoot.querySelector('d2l-input-text');
@@ -80,8 +80,8 @@ describe('pagination', () => {
 			async function getPaginationEl(pageNumber, maxPages, dir) {
 				const el = await fixture(
 					html`<d2l-labs-pagination
-						pageNumber="${pageNumber}"
-						maxPageNumber="${maxPages}"
+						page-number="${pageNumber}"
+						max-page-number="${maxPages}"
 						dir="${dir}"
 					></d2l-labs-pagination>`
 				);
@@ -166,7 +166,7 @@ describe('pagination', () => {
 			let el;
 			beforeEach(async() => {
 				el = await fixture(
-					html`<d2l-labs-pagination pageNumber="2" maxPageNumber="3"></d2l-labs-pagination>`
+					html`<d2l-labs-pagination page-number="2" max-page-number="3"></d2l-labs-pagination>`
 				);
 			});
 
@@ -227,7 +227,7 @@ describe('pagination', () => {
 
 			beforeEach(async() => {
 				el = await fixture(
-					html`<d2l-labs-pagination pageNumber="4" maxPageNumber="5"></d2l-labs-pagination>`
+					html`<d2l-labs-pagination page-number="4" max-page-number="5"></d2l-labs-pagination>`
 				);
 			});
 
@@ -295,11 +295,11 @@ describe('pagination', () => {
 			it('should fire when the page size selector value changes', async() => {
 				const el = await fixture(
 					html`<d2l-labs-pagination
-						pageNumber="2"
-						maxPageNumber="3"
-						showItemCountSelect
-						itemCountOptions="[10, 20, 50, 100]"
-						selectedCountOption="20"
+						page-number="2"
+						max-page-number="3"
+						show-item-count-select
+						item-count-options="[10, 20, 50, 100]"
+						selected-count-option="20"
 					></d2l-labs-pagination>`
 				);
 
