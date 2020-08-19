@@ -9,11 +9,11 @@ class Pagination extends RtlMixin(Localizer(LitElement)) {
 
 	static get properties() {
 		return {
-			pageNumber: { type: Number, attribute: 'page-number' },
-			maxPageNumber: { type: Number, attribute: 'max-page-number' },
-			showItemCountSelect : { type: Boolean, attribute: 'show-item-count-select' },
+			pageNumber: { type: Number, attribute: 'page-number', reflect: true },
+			maxPageNumber: { type: Number, attribute: 'max-page-number', reflect: true },
+			showItemCountSelect : { type: Boolean, attribute: 'show-item-count-select', reflect: true },
 			itemCountOptions : { type: Array, attribute: 'item-count-options' },
-			selectedCountOption : { type: Number, attribute: 'selected-count-option' },
+			selectedCountOption : { type: Number, attribute: 'selected-count-option', reflect: true },
 		};
 	}
 
