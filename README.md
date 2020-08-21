@@ -38,23 +38,23 @@ npm install @brightspace-ui-labs/pagination
 ```
 
 **Properties:**
-- `pageNumber` (required, Number): The current page number
-- `maxPageNumber` (required, Number): The highest page number the user could navigate to
-- `showItemCountSelect` (Boolean, default:`False`): Determines whether or not to show the `Results Per Page` select component.
-- `itemCountOptions` (Array, default:`[10,20,30,40]`): The options available in the `Results Per Page` select component.
-- `selectedCountOption`(Number): The starting `itemCountOptions` option to display in the `Results Per Page` select component.
+- `page-number` (required, Number): The current page number
+- `max-page-number` (required, Number): The highest page number the user could navigate to
+- `show-item-count-select` (Boolean, default:`False`): Determines whether or not to show the `Results Per Page` select component.
+- `item-count-options` (Array, default:`[10,20,30,40]`): The options available in the `Results Per Page` select component.
+- `selected-count-option`(Number): The starting `item-count-options` option to display in the `Results Per Page` select component.
 
 **Events:**
 The `d2l-labs-pagination` dispatches the `pagination-page-change` event when either the navigation buttons are pressed, or the page number is modified to point to a valid page number. It will return the number of the requested page:
 ```javascript
-editInPlace.addEventListener('pagination-page-change', (e) => {
+pagination.addEventListener('pagination-page-change', (e) => {
   console.log(e.detail.page);
 });
 ```
 
 The `d2l-labs-pagination` dispatches the `pagination-item-counter-change` event when the item count selector is value is changed. It will return the number of items requested per page:
 ```javascript
-editInPlace.addEventListener('pagination-item-counter-change', (e) => {
+pagination.addEventListener('pagination-item-counter-change', (e) => {
   console.log(e.detail.itemCount);
 });
 ```
