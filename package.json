@@ -1,6 +1,6 @@
 {
   "name": "@brightspace-ui-labs/pagination",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A component to indicate the existence of multiple pages of content, and to provide a mechanism to navigate them.",
   "repository": {
     "type": "git",
