@@ -10,8 +10,11 @@ export const Localizer = superclass => class extends LocalizeMixin(superclass) {
 				case 'ar':
 					translations = await import('./ar.js');
 					break;
+				case 'cy':
+					translations = await import('./cy.js');
+					break;
 				case 'da':
-					translations = await import('./da-dk.js');
+					translations = await import('./da.js');
 					break;
 				case 'de':
 					translations = await import('./de.js');
@@ -22,8 +25,17 @@ export const Localizer = superclass => class extends LocalizeMixin(superclass) {
 				case 'es':
 					translations = await import('./es.js');
 					break;
+				case 'es-es':
+					translations = await import('./es-es.js');
+					break;
 				case 'fr':
 					translations = await import('./fr.js');
+					break;
+				case 'fr-fr':
+					translations = await import('./fr-r.js');
+					break;
+				case 'fr-on':
+					translations = await import('./fr-on.js');
 					break;
 				case 'ja':
 					translations = await import('./ja.js');
@@ -46,8 +58,8 @@ export const Localizer = superclass => class extends LocalizeMixin(superclass) {
 				case 'zh-tw':
 					translations = await import('./zh-tw.js');
 					break;
-				case 'zh':
-					translations = await import('./zh.js');
+				case 'zh-cn':
+					translations = await import('./zh-cn.js');
 					break;
 			}
 			if (translations && translations.default) {
