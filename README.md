@@ -16,6 +16,8 @@
 > - [x] Demo page
 > - [x] README documentation
 
+![animated screenshot of pagination component](./screenshot.gif)
+
 A component to indicate the existence of, and provide navigation for, multiple pages of content.
 
 ## Installation
